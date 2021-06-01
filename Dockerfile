@@ -7,7 +7,6 @@ ENV NZBGET_PORT=6789
 RUN apt-get update \
  && apt-get install --yes --no-install-recommends \
     jq \
-    openssh-client \
     wget \
  && fileUrl=$(curl --silent --location "https://api.github.com/repos/nzbget/nzbget/releases/latest" | jq --raw-output '.assets[] | select(.name | endswith("bin-linux.run")) | .browser_download_url') \
  && wget --quiet --directory-prefix /tmp "${fileUrl}" \
